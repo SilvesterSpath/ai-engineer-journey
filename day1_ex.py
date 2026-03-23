@@ -3,11 +3,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
-# Load dataset
+# Load the iris dataset
 data = load_breast_cancer()
 X, y = data.data, data.target
 
-# Split dataset
+# Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Display dataset info
@@ -19,6 +19,7 @@ rf_default = RandomForestClassifier(random_state=42)
 rf_default.fit(X_train, y_train)
 
 # Predict and evaluate
+
 y_predict_default = rf_default.predict(X_test)
 accuracy_default = accuracy_score(y_test, y_predict_default)
 
@@ -34,8 +35,8 @@ rf_tuned = RandomForestClassifier(
 rf_tuned.fit(X_train, y_train)
 
 # Predict and evaluate
-y_pred_tuned = rf_tuned.predict(X_test)
-accuracy_tuned = accuracy_score(y_test, y_pred_tuned)
+y_predict_tuned = rf_tuned.predict(X_test)
+accuracy_tuned = accuracy_score(y_test, y_predict_tuned)
 
 print(f"Tuned Model Accuracy: {accuracy_tuned:.4f}")
-print("\n Classification Report:\n", classification_report(y_test, y_pred_tuned))
+print("\nClassification Report:\n", classification_report(y_test, y_predict_tuned))
